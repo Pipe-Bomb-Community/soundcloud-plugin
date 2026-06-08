@@ -1,0 +1,13 @@
+{
+	"plugin.soundcloud.name": "SoundCloud",
+
+	"plugin.soundcloud.attribute.track.soundcloud.title.name": "Title",
+	"plugin.soundcloud.attribute.track.soundcloud.genre.name": "Genre",
+	"plugin.soundcloud.attribute.track.soundcloud.front.name": "Cover Art",
+	"plugin.soundcloud.attribute.track.soundcloud.duration.name": "Duration",
+	"plugin.soundcloud.attribute.artist.soundcloud.name.name": "Name",
+	"plugin.soundcloud.attribute.artist.soundcloud.thumb.name": "Thumbnail",
+	"plugin.soundcloud.attribute.artist.soundcloud.background.name": "Background",
+	"plugin.soundcloud.attribute.album.soundcloud.title.name": "Title",
+	"plugin.soundcloud.attribute.album.soundcloud.front.name": "Cover Art"
+}
