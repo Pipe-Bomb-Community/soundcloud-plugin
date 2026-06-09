@@ -7,24 +7,16 @@ import {
 	LibraryHandlerApiContext,
 	StreamAudioProducer,
 	TaskRunContext,
-	Track,
 } from "@sdk";
-import { SoundCloud, Track as SCTrack, Transcoding } from "scdl-core";
+import { Track as SCTrack, Transcoding } from "scdl-core";
 import Axios from "axios";
-import { Playlist, SoundCloudLikesPage } from "./types/soundcloud.js";
+import { Playlist } from "./types/soundcloud.js";
 import { Readable } from "stream";
 import SCUtils from "./util/soundcloud.util.js";
 import { SoundCloudCache } from "./soundcloud-cache.js";
-import { DeviceType, KeyContainer, LicenseType, Widevine } from "widevine";
-import { readFile } from "fs/promises";
+import { KeyContainer, LicenseType } from "widevine";
 import { spawn } from "child_process";
-import { SoundCloudConfigManager } from "./soundcloud.config-manager.js";
 import { WideVine } from "./widevine.js";
-
-const SOUNDCLOUD_USER = "eyezahh";
-
-// const SOUNDCLOUD_PLAYLIST = "1570556182";
-const SOUNDCLOUD_PLAYLIST = "2233713206"; // knock2 x knockthisoff test
 
 export class SoundCloudLibraryHandler implements LibraryHandler {
 	public readonly id = "soundcloud";
@@ -408,31 +400,7 @@ export class SoundCloudLibraryHandler implements LibraryHandler {
 		return null;
 	}
 
-	async scan(taskRunContext: TaskRunContext): Promise<void> {
-		await SCUtils.waitForConnection();
-		const { data } = await Axios.get<Playlist>(
-			`https://api-v2.soundcloud.com/playlists/${SOUNDCLOUD_PLAYLIST}?representation=full&client_id=${SCUtils.getClientId()}`,
-		);
-
-		taskRunContext.update(0);
-
-		for (let [index, track] of data.tracks.entries()) {
-			if (track?.id) {
-				if (!track.title) {
-					track = await this.cache.getTrack(track.id);
-				}
-				await this.api.addTrack(
-					{
-						id: track.id.toString(),
-						title: track.title,
-					},
-					taskRunContext.getRunId(),
-				);
-				await this.cache.getCache().set(`track:${track.id}`, track);
-			}
-			taskRunContext.update(index / data.tracks.length);
-		}
-	}
+	async scan(taskRunContext: TaskRunContext): Promise<void> {}
 
 	async doTracksExist(trackIds: string[]): Promise<string[]> {
 		const tracks = await this.cache.resolveTrackList(trackIds);
@@ -440,55 +408,4 @@ export class SoundCloudLibraryHandler implements LibraryHandler {
 			.filter((track) => !!track)
 			.map((track) => track.id.toString());
 	}
-
-	// async scan(taskRunContext: TaskRunContext): Promise<void> {
-	// 	await SCUtils.waitForConnection();
-
-	// 	const user = await SoundCloud.users.getUser(
-	// 		`https://soundcloud.com/${SOUNDCLOUD_USER}`,
-	// 	);
-
-	// 	taskRunContext.update(0);
-
-	// 	return new Promise<void>((resolve, reject) => {
-	// 		const total = user.likes_count;
-	// 		let trackCount = 0;
-
-	// 		let nextUrl = `https://api-v2.soundcloud.com/users/${user.id}/likes?client_id=${SCUtils.getClientId()}&limit=100`;
-
-	// 		const getChunk = async () => {
-	// 			try {
-	// 				const { data } = await Axios.get<SoundCloudLikesPage>(nextUrl);
-
-	// 				for (const entry of data.collection) {
-	// 					trackCount++;
-	// 					if (entry.track?.id) {
-	// 						await this.api.addTrack({
-	// 							id: entry.track.id.toString(),
-	// 							title: entry.track.title,
-	// 						});
-	// 						await this.cache
-	// 							.getCache()
-	// 							.set(`track:${entry.track.id}`, entry.track);
-
-	// 						entry.track.media.transcodings[0]?.url;
-	// 					}
-
-	// 					taskRunContext.update(trackCount / total);
-	// 				}
-
-	// 				if (data.next_href) {
-	// 					nextUrl = `${data.next_href}&client_id=${SCUtils.getClientId()}`;
-	// 					getChunk();
-	// 				} else {
-	// 					resolve();
-	// 				}
-	// 			} catch (e) {
-	// 				reject(e);
-	// 			}
-	// 		};
-
-	// 		getChunk();
-	// 	});
-	// }
 }
