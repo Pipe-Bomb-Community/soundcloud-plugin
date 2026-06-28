@@ -71,6 +71,7 @@ To decrypt SoundCloud's DRM, you'll need to locate L3 Widevine keys. Without the
 | :-------- | ---------------- | -------- | --------------------------------------------------------------------------------------------------------------- |
 | `title`   | `string`         | ❌       | The title of the album.                                                                                         |
 | `front`   | `buffer` (image) | ❌       | The cover art of the album. If the album has no cover art, this falls back to the cover art of the first track. |
+| `year`    | `integer`        | ❌       | The year the album was released.                                                                                |
 
 ## Contributing
 

@@ -26,7 +26,7 @@ export interface User {
 	city?: string;
 	comments_count: number;
 	country_code?: number;
-	created_at: Date;
+	created_at: string;
 	description?: string;
 	followers_count: number;
 	followings_count: number;
@@ -35,7 +35,7 @@ export interface User {
 	groups_count: number;
 	id: number;
 	kind: "user";
-	last_modified: Date;
+	last_modified: string;
 	last_name: string;
 	likes_count: number;
 	playlist_likes_count: number;
@@ -95,7 +95,7 @@ export interface Track {
 	caption?: string;
 	commentable: boolean;
 	comment_count: number;
-	created_at: Date;
+	created_at: string;
 	description?: string;
 	downloadable: boolean;
 	download_count: number;
@@ -107,7 +107,7 @@ export interface Track {
 	id: number;
 	kind: "track";
 	label_name?: string;
-	last_modified: Date;
+	last_modified: string;
 	license: string;
 	likes_count: number;
 	permalink: string;
@@ -130,7 +130,7 @@ export interface Track {
 	};
 	purchase_title?: string;
 	purchase_url?: string;
-	release_date: Date;
+	release_date: string;
 	reposts_count: number;
 	secret_token?: string;
 	sharing: string;
@@ -144,7 +144,7 @@ export interface Track {
 	user_id: number;
 	visuals?: Visual;
 	waveform_url: string;
-	display_date: Date;
+	display_date: string;
 	media: {
 		transcodings: Transcoding[];
 	};
@@ -163,7 +163,7 @@ export interface TrendingTrackResponse {
 
 export interface Playlist {
 	artwork_url?: string;
-	created_at: Date;
+	created_at: string;
 	description?: string;
 	duration: number;
 	embeddable_by: string;
@@ -171,7 +171,7 @@ export interface Playlist {
 	id: number;
 	kind: "playlist";
 	label_name?: string;
-	last_modified: Date;
+	last_modified: string;
 	license: string;
 	likes_count: number;
 	managed_by_feeds: boolean;
@@ -180,7 +180,7 @@ export interface Playlist {
 	public: boolean;
 	purchase_title?: string;
 	purchase_url?: string;
-	release_date?: Date;
+	release_date?: string;
 	reposts_count: number;
 	secret_token?: string;
 	sharing: string;
@@ -190,8 +190,8 @@ export interface Playlist {
 	user_id: number;
 	set_type: string;
 	is_album: boolean;
-	published_at: Date;
-	display_date: Date;
+	published_at: string;
+	display_date: string;
 	user: User;
 	tracks: Track[];
 	track_count: number;

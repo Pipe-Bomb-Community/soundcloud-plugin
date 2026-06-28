@@ -91,6 +91,11 @@ export class SoundCloudAttributeSource implements AttributeSource {
 				type: "buffer",
 				supportsMultiple: false,
 			},
+			{
+				key: "year",
+				type: "integer",
+				supportsMultiple: false,
+			},
 		]);
 	}
 
@@ -308,6 +313,15 @@ export class SoundCloudAttributeSource implements AttributeSource {
 				});
 			}
 		}
+
+		const year = new Date(
+			album.release_date ?? album.display_date,
+		).getUTCFullYear();
+
+		attributes.push({
+			key: "year",
+			value: year,
+		});
 
 		const artists: IdentifiableTrackArtistMetadata[] = [];
 		if (album.user?.id) {
