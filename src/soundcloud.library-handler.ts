@@ -10,7 +10,6 @@ import {
 } from "@sdk";
 import { Track as SCTrack, Transcoding } from "scdl-core";
 import Axios from "axios";
-import { Playlist } from "./types/soundcloud.js";
 import { Readable } from "stream";
 import SCUtils from "./util/soundcloud.util.js";
 import { SoundCloudCache } from "./soundcloud-cache.js";
@@ -33,7 +32,7 @@ export class SoundCloudLibraryHandler implements LibraryHandler {
 		this.api.registerPluginTask({
 			id: "scan",
 			resumable: false,
-			run: (ctx) => this.scan(ctx),
+			run: (ctx: TaskRunContext) => this.scan(ctx),
 		});
 
 		// const clientId = await readFile(
