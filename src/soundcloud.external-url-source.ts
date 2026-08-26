@@ -4,7 +4,7 @@ import {
 	ExternalUrl,
 	ExternalUrlSource,
 	TrackExternalUrlHelper,
-} from "@sdk";
+} from "@pipe-bomb/plugin-sdk";
 
 export class SoundCloudExternalUrlSource implements ExternalUrlSource {
 	getAlbumUrls(helper: AlbumExternalUrlHelper): ExternalUrl[] | null {

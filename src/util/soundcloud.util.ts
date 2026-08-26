@@ -2,7 +2,7 @@ import Axios from "axios";
 import * as Cheerio from "cheerio";
 import { SoundCloudHydratable } from "../types/soundcloud.js";
 import { SoundCloud } from "scdl-core";
-import { Logger } from "@sdk";
+import { Logger } from "@pipe-bomb/plugin-sdk";
 
 namespace SCUtils {
 	let clientId: string | null = null;

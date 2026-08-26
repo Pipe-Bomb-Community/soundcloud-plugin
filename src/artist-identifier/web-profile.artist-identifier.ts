@@ -3,7 +3,7 @@ import {
 	ArtistInformationHelper,
 	IdentifierDependency,
 	Logger,
-} from "@sdk";
+} from "@pipe-bomb/plugin-sdk";
 import { WebProfile } from "../types/soundcloud.js";
 import { SoundCloudCache } from "../soundcloud-cache.js";
 

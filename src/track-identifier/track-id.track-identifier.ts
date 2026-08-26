@@ -3,7 +3,7 @@ import {
 	TrackIdentifier,
 	TrackIdentifierTarget,
 	TrackInformationHelper,
-} from "@sdk";
+} from "@pipe-bomb/plugin-sdk";
 
 export class TrackIdTrackIdentifier implements TrackIdentifier {
 	public readonly target: TrackIdentifierTarget = "track";

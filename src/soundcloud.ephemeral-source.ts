@@ -11,7 +11,7 @@ import {
 	IdentifiableAlbumMetadata,
 	IdentifiableArtistMetadata,
 	LibraryHandler,
-} from "@sdk";
+} from "@pipe-bomb/plugin-sdk";
 import { SoundCloudCache } from "./soundcloud-cache.js";
 import SCUtils from "./util/soundcloud.util.js";
 import Axios from "axios";

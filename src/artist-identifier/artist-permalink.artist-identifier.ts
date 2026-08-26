@@ -2,7 +2,7 @@ import {
 	ArtistIdentifier,
 	ArtistInformationHelper,
 	IdentifierDependency,
-} from "@sdk";
+} from "@pipe-bomb/plugin-sdk";
 import { SoundCloudCache } from "../soundcloud-cache.js";
 
 export class ArtistPermalinkArtistIdentifier implements ArtistIdentifier {

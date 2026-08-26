@@ -1,4 +1,4 @@
-import { ConfigManager, ConfigManagerApiContext, ConfigNode } from "@sdk";
+import { ConfigManager, ConfigManagerApiContext, ConfigNode } from "@pipe-bomb/plugin-sdk";
 import { WideVineFiles } from "./interface/widevine-files.interface.js";
 
 export class SoundCloudConfigManager implements ConfigManager {

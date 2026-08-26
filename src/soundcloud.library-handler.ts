@@ -7,7 +7,7 @@ import {
 	LibraryHandlerApiContext,
 	StreamAudioProducer,
 	TaskRunContext,
-} from "@sdk";
+} from "@pipe-bomb/plugin-sdk";
 import { Track as SCTrack, Transcoding } from "scdl-core";
 import Axios from "axios";
 import { Readable } from "stream";

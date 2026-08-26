@@ -11,7 +11,7 @@ import {
 	Logger,
 	TrackAttributionHelper,
 	TrackMetadata,
-} from "@sdk";
+} from "@pipe-bomb/plugin-sdk";
 import Axios, { AxiosError } from "axios";
 import path from "path";
 import { SoundCloudCache } from "./soundcloud-cache.js";

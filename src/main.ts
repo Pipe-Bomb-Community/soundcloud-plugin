@@ -1,4 +1,4 @@
-import type PipeBomb from "@sdk";
+import type PipeBomb from "@pipe-bomb/plugin-sdk";
 import { SoundCloudExternalUrlSource } from "./soundcloud.external-url-source.js";
 import { SoundCloudLibraryHandler } from "./soundcloud.library-handler.js";
 import { TrackIdTrackIdentifier } from "./track-identifier/track-id.track-identifier.js";
