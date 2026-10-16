@@ -96,6 +96,16 @@ export class SoundCloudAttributeSource implements AttributeSource {
 				type: "integer",
 				supportsMultiple: false,
 			},
+			{
+				key: "releaseradar_exclude",
+				type: "boolean",
+				supportsMultiple: false,
+			},
+			{
+				key: "release_date",
+				type: "integer",
+				supportsMultiple: false,
+			},
 		]);
 	}
 
@@ -323,6 +333,20 @@ export class SoundCloudAttributeSource implements AttributeSource {
 			value: year,
 		});
 
+		if (!album.is_album) {
+			attributes.push({
+				key: "releaseradar_exclude",
+				value: true,
+			});
+		}
+
+		if (album.created_at) {
+			attributes.push({
+				key: "release_date",
+				value: new Date(album.created_at).getTime(),
+			});
+		}
+
 		const artists: IdentifiableTrackArtistMetadata[] = [];
 		if (album.user?.id) {
 			const attributes = this.toArtistMetadata(album.user);
@@ -346,6 +370,10 @@ export class SoundCloudAttributeSource implements AttributeSource {
 			{
 				key: "title",
 				value: `${user.username}'s Likes`,
+			},
+			{
+				key: "releaseradar_exclude",
+				value: true,
 			},
 		];
 
