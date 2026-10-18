@@ -29,12 +29,6 @@ export class SoundCloudLibraryHandler implements LibraryHandler {
 	async enable(libraryHandlerApiContext: LibraryHandlerApiContext) {
 		this.api = libraryHandlerApiContext;
 
-		this.api.registerPluginTask({
-			id: "scan",
-			resumable: false,
-			run: (ctx: TaskRunContext) => this.scan(ctx),
-		});
-
 		// const clientId = await readFile(
 		// 	"plugins/soundcloud/widevine/client_id.bin",
 		// );
