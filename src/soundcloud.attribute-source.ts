@@ -16,6 +16,7 @@ import Axios, { AxiosError } from "axios";
 import path from "path";
 import { SoundCloudCache } from "./soundcloud-cache.js";
 import { Playlist, Track as SCTrack, User } from "./types/soundcloud.js";
+import { toDateAttributes } from "./utils.js";
 
 export class SoundCloudAttributeSource implements AttributeSource {
 	public id = "soundcloud";
@@ -60,6 +61,21 @@ export class SoundCloudAttributeSource implements AttributeSource {
 					return `${minutes}:${seconds.toString().padStart(2, "0")}`;
 				},
 			},
+			{
+				key: "year",
+				type: "integer",
+				supportsMultiple: false,
+			},
+			{
+				key: "release_date",
+				type: "string",
+				supportsMultiple: false,
+			},
+			{
+				key: "release_timestamp",
+				type: "integer",
+				supportsMultiple: false,
+			},
 		]);
 
 		this.api.registerArtistAttributes([
@@ -103,6 +119,11 @@ export class SoundCloudAttributeSource implements AttributeSource {
 			},
 			{
 				key: "release_date",
+				type: "string",
+				supportsMultiple: false,
+			},
+			{
+				key: "release_timestamp",
 				type: "integer",
 				supportsMultiple: false,
 			},
@@ -244,6 +265,11 @@ export class SoundCloudAttributeSource implements AttributeSource {
 			});
 		}
 
+		const releaseDate = track.release_date ?? track.created_at;
+		if (releaseDate) {
+			attributes.push(...toDateAttributes(new Date(releaseDate)));
+		}
+
 		const artists: IdentifiableTrackArtistMetadata[] = [];
 		if (track.user?.id) {
 			const attributes = this.toArtistMetadata(track.user);
@@ -324,15 +350,6 @@ export class SoundCloudAttributeSource implements AttributeSource {
 			}
 		}
 
-		const year = new Date(
-			album.release_date ?? album.display_date,
-		).getUTCFullYear();
-
-		attributes.push({
-			key: "year",
-			value: year,
-		});
-
 		if (!album.is_album) {
 			attributes.push({
 				key: "releaseradar_exclude",
@@ -340,11 +357,9 @@ export class SoundCloudAttributeSource implements AttributeSource {
 			});
 		}
 
-		if (album.created_at) {
-			attributes.push({
-				key: "release_date",
-				value: new Date(album.created_at).getTime(),
-			});
+		const releaseDate = album.release_date ?? album.created_at;
+		if (releaseDate) {
+			attributes.push(...toDateAttributes(new Date(releaseDate)));
 		}
 
 		const artists: IdentifiableTrackArtistMetadata[] = [];

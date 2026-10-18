@@ -5,9 +5,18 @@
 	"plugin.soundcloud.attribute.track.soundcloud.genre.name": "Genre",
 	"plugin.soundcloud.attribute.track.soundcloud.front.name": "Cover Art",
 	"plugin.soundcloud.attribute.track.soundcloud.duration.name": "Duration",
+	"plugin.soundcloud.attribute.track.soundcloud.year.name": "Year",
+	"plugin.soundcloud.attribute.track.soundcloud.release_date.name": "Release date",
+	"plugin.soundcloud.attribute.track.soundcloud.release_timestamp.name": "Release timestamp",
+
 	"plugin.soundcloud.attribute.artist.soundcloud.name.name": "Name",
 	"plugin.soundcloud.attribute.artist.soundcloud.thumb.name": "Thumbnail",
 	"plugin.soundcloud.attribute.artist.soundcloud.background.name": "Background",
+
 	"plugin.soundcloud.attribute.album.soundcloud.title.name": "Title",
-	"plugin.soundcloud.attribute.album.soundcloud.front.name": "Cover Art"
+	"plugin.soundcloud.attribute.album.soundcloud.front.name": "Cover Art",
+	"plugin.soundcloud.attribute.album.soundcloud.year.name": "Year",
+	"plugin.soundcloud.attribute.album.soundcloud.releaseradar_exclude.name": "Exclude from Release Radar",
+	"plugin.soundcloud.attribute.album.soundcloud.release_date.name": "Release date",
+	"plugin.soundcloud.attribute.album.soundcloud.release_timestamp.name": "Release timestamp"
 }
